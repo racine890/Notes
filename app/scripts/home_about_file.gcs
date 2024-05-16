@@ -1,0 +1,16 @@
+print val --- ABOUT ---
+GetTableElement *choosen of *canban.eventList
+# ('app/res/file.png', 'Test2', (3, 'Test2', '2023-07-19', 1, 1, 1, None))
+SetVar *current_file LASTRESULT
+evaluate "File Name : "+{*current_file}[1]+"\n"=>*about
+if evaluate({*current_file}[2][3] == 1) then
+	evaluate {*about}+"File Type : Note\n"=>*about
+if evaluate({*current_file}[2][3] == 0) then
+	evaluate {*about}+"File Type : Folder\n"=>*about
+evaluate {*about}+"Creation Date : "+str({*current_file}[2][2])+"\n"=>*about
+if evaluate({*current_file}[2][-1] == None) then
+	evaluate {*about}+"Protected : No\n"=>*about
+if evaluate({*current_file}[2][-1] != None) then
+	evaluate {*about}+"Protected : Yes\n"=>*about
+MessageBox About *about
+end

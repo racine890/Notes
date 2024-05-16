@@ -1,0 +1,9 @@
+#db_getFiles
+connect database database.db
+query select_one with q
+close database
+end
+
+[q]
+select content from Note where file = *current_file;
+[/q]

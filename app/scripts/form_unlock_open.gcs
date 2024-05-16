@@ -1,0 +1,19 @@
+print val --- UNLOCKING FILE ---
+GetInput 2
+if evaluate({LASTRESULT} != {*to_open}[2][-1]) then
+	MessageBox Error Incorrect Password!
+	end
+if evaluate({*to_open}[2][3] == 0) then
+	evaluate {*to_open}[2][0]
+	SetVar *current_folder LASTRESULT
+	load home.ch
+evaluate {*to_open}[2][0]
+SetVar *current_file LASTRESULT
+execute app/scripts/db_getNotes.gcs 1
+if evaluate({LASTTUPLE} != None) then
+	GetTableElement 0 of LASTTUPLE
+	SetVar *fcontents LASTRESULT
+if evaluate({LASTTUPLE} == None) then
+	SetVar *fcontents evaluate('')
+load app/screens/editor.ch
+end

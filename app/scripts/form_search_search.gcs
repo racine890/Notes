@@ -1,0 +1,5 @@
+GetInput 2
+SetVar *term LASTRESULT
+execute app/scripts/db_getFilesWithSearch.gcs 1
+load home.ch
+end

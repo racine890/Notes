@@ -1,0 +1,10 @@
+#db_getFiles
+connect database database.db
+execute query ins
+commit
+close database
+end
+
+[ins]
+insert into File ( name, type, parent ) values ( *fname , *ftype , *current_folder );
+[/ins]

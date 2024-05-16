@@ -1,0 +1,6 @@
+GetInput 2
+SetVar *fname LASTRESULT
+SetVar *ftype 0
+execute app/scripts/db_insFile.gcs 1
+load home.ch
+end

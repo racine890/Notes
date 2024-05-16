@@ -1,0 +1,23 @@
+print val --- OPENING FILE ---
+GetTableElement *choosen of *canban.eventList
+SetVar *to_open LASTRESULT
+if evaluate({LASTRESULT}[2][-1] != None) then
+	load app/screens/form_unlock.ch
+	end
+GetTableElement *choosen of *canban.eventList
+if evaluate({LASTRESULT}[2][3] == 0) then
+	evaluate {LASTRESULT}[2][0]
+	SetVar *current_folder LASTRESULT
+	load home.ch
+evaluate {LASTRESULT}[2][0]
+SetVar *current_file LASTRESULT
+execute app/scripts/db_getNotes.gcs 1
+if evaluate({LASTTUPLE} != None) then
+	SetVar *create_flag 0
+	GetTableElement 0 of LASTTUPLE
+	SetVar *fcontents LASTRESULT
+if evaluate({LASTTUPLE} == None) then
+	SetVar *fcontents evaluate('')
+	SetVar *create_flag 1
+load app/screens/editor.ch
+end

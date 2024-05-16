@@ -1,0 +1,7 @@
+print val ------ NEW FILE ----------------
+GetInput 2
+SetVar *fname LASTRESULT
+SetVar *ftype 1
+execute app/scripts/db_insFile.gcs 1
+load home.ch
+end

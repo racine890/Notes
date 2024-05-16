@@ -1,0 +1,13 @@
+print val --- DELETE ---
+GetInput 2
+SetVar *passwd LASTRESULT
+GetTableElement *choosen of *canban.eventList
+GetTableElement 2 of LASTRESULT
+GetTableElement 0 of LASTRESULT
+SetVar *current_file LASTRESULT
+print var *current_file
+print var *passwd
+execute app/scripts/db_lockFile.gcs 1
+MessageBox Done! File locked!
+load home.ch
+end

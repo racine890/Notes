@@ -1,0 +1,13 @@
+#db_deleteFile.gcs
+evaluate messagebox.askyesno("Delete","Are you sure ?")=>*choice
+if evaluate({*choice} == False) then
+	end
+connect database database.db
+execute query q1
+commit
+close database
+end
+
+[q1]
+update File set active = 0 where id = *current_file ;
+[/q1]

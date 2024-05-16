@@ -1,0 +1,3 @@
+SetVar *current_folder 1
+load home.ch
+end

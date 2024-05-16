@@ -1,0 +1,45 @@
+# Fenêtre affichant une vue Canban à partir de données en entrée
+# Au clic de l'image, exécutera le script associé
+
+# Params needed :
+# *canban.imgList [(icon, name, function)] ex: [('i1.png','Homme','test1.ch'),('i1.png','Homme2','test.ch'),('i1.png','Homme3','test.ch'),('i4.png','Cochon','test.ch'),('i1.png','Homme4','test.ch')]
+# *canban.screenwidth : Your screen witdh
+# *canban.screensize : Your screen size
+# *canban.x : The first x
+# *canban.y : The first y
+# *canban.blocwidth : icons width
+# *canban.blocsize : icons size
+# *canban.blocspace : spaces between icons
+
+# Returned values :
+# *canban.eventList
+SetVar *canban.eventList evaluate(dict())
+SetVar *canban.x.initial *canban.x
+function add continue
+end
+
+[@add]
+add *canban.x *canban.blocspace
+SetVar *canban.x LASTRESULT
+if evaluate(len({*canban.imgList})==0) then
+	end
+evaluate {*canban.imgList}.pop(0)
+SetVar *el LASTRESULT
+GetTableElement 0 of LASTRESULT
+LoadPic LASTRESULT at *canban.x-*canban.y
+evaluate {*canban.eventList}.__setitem__(self.page.pics[-1], {*el})
+evaluate self.page.sheet.create_text({*canban.x}+int({*canban.blocspace}),int({*canban.y})-5, text={*el}[1])
+add *canban.x *canban.blocwidth
+SetVar *canban.x LASTRESULT
+evaluate int({*canban.screenwidth})-int({*canban.blocwidth}) =>*tmp
+compare *canban.x *tmp
+if 1 then
+	add *canban.y *canban.blocspace
+	SetVar *canban.y LASTRESULT
+	add *canban.y *canban.blocsize
+	SetVar *canban.y LASTRESULT
+	SetVar *canban.x *canban.x.initial
+	function add continue
+	end
+function add continue
+[/@add]

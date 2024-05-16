@@ -1,0 +1,16 @@
+:Model File for notes
+
+ Todo :
+	- Optimize
+	- Write Documentation
+	- Publish
+	- ajouter resources
+	- Faire une version pro
+	-Améliorer l'éditeur de sorte à ce qu'il soit comme word. +couleur, +gras, +police, +image, +...
+
+Done :
+	- Ajouter une note, (ok)
+	- Créer dossier de notes, (ok)
+	- Parcourir dossiers (ok)
+	- Rechercher dans un dossier (ok)
+	- Verouiller un dossier (ok)

@@ -1,0 +1,12 @@
+#db_getFiles
+connect database database.db
+# execute query ins
+compare *create_flag 1
+if 0 then
+	evaluate self.connect.cursor.execute("insert into Note ( file, content ) values ( ? , ? );", ({*current_file}, {*newContent}))
+if 5 then
+	evaluate self.connect.cursor.execute("update Note set content = ? where file = ?;", ({*newContent}, {*current_file}))
+commit
+SetVar *create_flag 0
+close database
+end

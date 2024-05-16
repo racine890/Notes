@@ -1,0 +1,9 @@
+#db_getFiles
+connect database database.db
+query select_all with q1
+close database
+end
+
+[q1]
+select * from File where parent = *current_folder and id != 1 ;
+[/q1]

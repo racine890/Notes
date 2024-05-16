@@ -1,0 +1,9 @@
+print val --- DELETE ---
+GetTableElement *choosen of *canban.eventList
+GetTableElement 2 of LASTRESULT
+GetTableElement 0 of LASTRESULT
+SetVar *current_file LASTRESULT
+execute app/scripts/db_deleteFile.gcs 1
+MessageBox Done File Deleted!
+load home.ch
+end

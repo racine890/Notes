@@ -1,0 +1,18 @@
+check file database.db
+if 0 then
+	system('copy default.db database.db')
+SetVar *canban.screenwidth 600
+SetVar *canban.screensize 600
+SetVar *canban.x 50
+SetVar *canban.y 30
+SetVar *canban.blocwidth 100
+SetVar *canban.blocsize 100
+SetVar *canban.blocspace 10
+CheckFlag *inited
+if 1 then
+	execute app/scripts/refresh.gcs 1
+	end
+SetVar *current_folder 1
+SetFlag *inited
+execute app/scripts/refresh.gcs 1
+end
