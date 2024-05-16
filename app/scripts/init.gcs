@@ -1,6 +1,11 @@
 check file database.db
+SetVar *platform PLATFORM
 if 0 then
-	system('copy default.db database.db')
+	compare *platform linux
+	if 0 then
+		system('cp default.db database.db')
+	if 5 then
+		system('copy default.db database.db')
 SetVar *canban.screenwidth 600
 SetVar *canban.screensize 600
 SetVar *canban.x 50
