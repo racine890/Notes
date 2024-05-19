@@ -1,3 +1,11 @@
-SetVar *current_folder 1
+print val --------- Going back --------------
+
+if evaluate({*current_folder} not in {*parent_dir}) then
+	SetVar *current_folder 1
+	end
+
+evaluate {*parent_dir}[{*current_folder}]
+SetVar *current_folder LASTRESULT
+
 load home.ch
 end

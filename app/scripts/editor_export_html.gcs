@@ -1,0 +1,6 @@
+SaveFile
+SetVar *fn LASTRESULT
+evaluate htmlParseFormat({*fcontents})=>*fcts
+write *fcts=>*fn
+MessageBox done Export complete!
+end

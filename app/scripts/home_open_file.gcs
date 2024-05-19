@@ -1,11 +1,26 @@
-print val --- OPENING FILE ---
+# To open a folder, just pass its id as *current_file.
+# Once it's done, load home.ch, and that's all !
+
+# Script to open some file
+print val ------ PARENT --------------
 GetTableElement *choosen of *canban.eventList
 SetVar *to_open LASTRESULT
+print var *to_open
+evaluate {*parent_dir}.__setitem__({*to_open}[2][0], {*to_open}[2][5])
+print var *parent_dir
+
+# First, gets the file to open ( as a tuple )
+GetTableElement *choosen of *canban.eventList
+SetVar *to_open LASTRESULT
+# Checks if it is locked. If so, asks for password ( form_unlock )
 if evaluate({LASTRESULT}[2][-1] != None) then
 	load app/screens/form_unlock.ch
 	end
+
+# Checks if file is a folder
 GetTableElement *choosen of *canban.eventList
 if evaluate({LASTRESULT}[2][3] == 0) then
+	# If so, Gets the id as *current_folder, then reload home.ch
 	evaluate {LASTRESULT}[2][0]
 	SetVar *current_folder LASTRESULT
 	load home.ch

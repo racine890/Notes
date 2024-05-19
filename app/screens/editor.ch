@@ -8,55 +8,67 @@ Edit.Size: 450
 
 BackGround: app/res/bg.png
 
+Text.nb: 4
+Text1: Save
+Text1.id: 0
+0.x: 0
+0.y: 40
+
+Text2: Close
+Text2.id: 1
+1.x: 60
+1.y: 40
+
+Text3: Export(txt)
+Text3.id: 2
+2.x: 130
+2.y: 40
+
+Text4: Export(html)
+Text4.id: 3
+3.x: 210
+3.y: 40
+
 #At loading, execute this function
-Onload: @create
+OnDisplay: app/scripts/editor_create.gcs
 
 #This is commented because it's not production version
 #If you export this as standalone, please uncomment this part.
 #If your app is installed, load it on display
-OnDisplay: @loadInstalled
-
-#Function to create the ToolBar
-[@create]
-SetVar *updated 0
-evaluate ["File"]
-SetVar *Big LASTRESULT
-evaluate [["Save", "Close"]]
-SetVar *Sub LASTRESULT
-evaluate [["@save", "@close"]]
-SetVar *Act LASTRESULT
-ToolBar *Big *Sub *Act
-[/@create]
-
-#Function to load the param file
-[@loadInstalled]
-evaluate self.page.st.config(insertbackground='#61FEEB')
-SetEditText var *fcontents
-end
-[/@loadInstalled]
-
-#Function to save File. It handle exception on fileName to save or saveAs
-[@save]
-GetEditText
-SetVar *newContent LASTRESULT
-execute app/scripts/db_insNote.gcs 1
-MessageBox Saved! Note saved!
-end
-[/@save]
-
-#Just to quit app
-[@close]
-load home.ch
-[/@close]
 
 [events]
-Control.s: @save
-Control.S: @saveAs
-Control.q: @close
-Control.Q: @close
+Control.s: app/scripts/editor_save.gcs
+Control.S: app/scripts/editor_save.gcs
+Control.q: app/scripts/editor_close.gcs
+Control.Q: app/scripts/editor_close.gcs
+Key: @editMode
+Button-1: @act
 [/events]
 
-#DYNAMIC PART OF THEME BUTTON
-edit_text_color: white
-edit_background: black
+[@act]
+switch LASTCLICKEDID
+if 7 then
+	execute app/scripts/editor_save.gcs
+	end
+if 8 then
+	execute app/scripts/editor_close.gcs
+	end
+if 9 then
+	execute app/scripts/editor_export_txt.gcs
+	end
+if 10 then
+	execute app/scripts/editor_export_html.gcs
+	end
+[/@act]
+
+[@editMode]
+compare *updated 0
+if 5 then
+	end
+SetVar *updated 1
+evaluate self.page.st.delete('1.0', 'end-1c')
+evaluate self.page.st.insert('end', {*fcontents})
+end
+[/@editMode]
+
 #END

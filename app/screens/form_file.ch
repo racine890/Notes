@@ -1,6 +1,13 @@
 BackGround: app/res/bg.png
 
-Buttons.nb: 2
+OnDisplay: @color
+
+[@color]
+ConfigButton 4 bg='#f96869', fg='#ffffee'
+end
+[/@color]
+
+Buttons.nb: 3
 Button1: Create File
 Button1.id: 0
 0.x: 600
@@ -11,10 +18,16 @@ Button2.id: 1
 1.x: 600
 1.y: 160
 
+Button3: Cancel
+Button3.id: 4
+4.x: 600
+4.y: 220
+4.link: home.ch
+
 Input.nb: 1
 Input1.id: 2
-2.x: 600
-2.y: 40
+2.x: 574
+2.y: 50
 
 Text.nb: 1
 Text1: Name

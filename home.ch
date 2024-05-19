@@ -6,13 +6,12 @@ AppIcon: app/res/file.png
 
 OnDisplay: app/scripts/init.gcs
 
-ScrollY: yes
-
 [events]
 Button-1: @test
+Double-Button-1: app/scripts/home_open_file.gcs
 [/events]
 
-Text.nb: 2
+Text.nb: 1
 Text1: ...
 Text1.id: 0
 0.x: 650
@@ -23,19 +22,19 @@ Text2.id: 7
 7.x: 650
 
 Button.nb: 7
-Button1: Nouveau
+Button1: New
 Button1.id: 1
-Button2: Ouvrir
+Button2: Open
 Button2.id: 2
-Button3: Fouiller
+Button3: Search
 Button3.id: 3
-Button4: A propos
+Button4: About
 Button4.id: 4
-Button5: Supprimer
+Button5: Delete
 Button5.id: 5
-Button6: Protéger
+Button6: Secure
 Button6.id: 6
-Button7: Retour
+Button7: Back
 Button7.id: 8
 
 1.x: 650
@@ -67,6 +66,7 @@ BackGround: app/res/bg.png
 [@test]
 if evaluate({LASTCLICKEDID} in {*canban.eventList}) then
 	SetVar *choosen LASTCLICKEDID
+	GetTableElement *choosen of *canban.eventList
 	GetTableElement LASTCLICKEDID of *canban.eventList
 	GetTableElement 1 of LASTRESULT
 	CreateText 0 LASTRESULT
