@@ -1,0 +1,5 @@
+GetEditText
+SetVar *newContent LASTRESULT
+execute app/scripts/db_insNote.gcs 1
+MessageBox Saved! Note saved!
+end

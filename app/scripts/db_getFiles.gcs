@@ -17,5 +17,5 @@ select * from File where parent = *current_folder and id != 1 and active = 1;
 [/q1]
 
 [q2]
-select File.* from File, Note where parent = *current_folder and File.id != 1 and active = 1 and File.id = Note.File and (File.name like *term or Note.content like *term );
+select File.* from File, Note where File.id != 1 and active = 1 and File.id = Note.File and (File.name like *term or Note.content like *term );
 [/q2]

@@ -1,0 +1,17 @@
+SetVar *updated 0
+LoadPic app/res/save.png at 10-0
+LoadPic app/res/close.png at 70-0
+LoadPic app/res/export.png at 130-0
+LoadPic app/res/export.png at 190-0
+evaluate self.page.st.config(insertbackground='#61FEEB', background=chd('background', 'Config.ch', alt='black', comment=True), foreground=chd('font_color', 'Config.ch', alt='white', comment=True), font=(chd('font', 'Config.ch', alt='Helvetica'), chd('font_size', 'Config.ch', alt=13), "bold"))
+SetEditText var *fcontents
+evaluate update_text(self.page.st)
+end
+evaluate ["File", "Actions"]
+SetVar *Big LASTRESULT
+evaluate [["Save", "Close"], ["Export(*txt)", "Export(*html)"]]
+SetVar *Sub LASTRESULT
+evaluate [["app/scripts/editor_save.gcs", "app/scripts/editor_close.gcs"], ["app/scripts/editor_export_txt.gcs", "app/scripts/editor_export_html.gcs"]]
+SetVar *Act LASTRESULT
+ToolBar *Big *Sub *Act
+end

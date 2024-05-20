@@ -1,0 +1,5 @@
+SaveFile
+SetVar *fn LASTRESULT
+write *fcontents=>*fn
+MessageBox done Export complete!
+end

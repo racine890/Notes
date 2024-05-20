@@ -1,11 +1,10 @@
 # refresh.gcs
 # Show the current folder id
-CreateText 7 *current_folder
 # Get the files of this folder in data
 execute app/scripts/db_getFiles.gcs 1
 SetVar *data LASTLIST
 # Get the folders and the files
-SetVar *folders evaluate( [("app/res/folder.png", item[1], item) for item in self.vars.getvar("LASTLIST") if item[3] == 0] )
+SetVar *folders evaluate( [(specialIcon(item[1]), item[1], item) for item in self.vars.getvar("LASTLIST") if item[3] == 0] )
 SetVar *files evaluate( [("app/res/file.png", item[1], item) for item in self.vars.getvar("LASTLIST") if item[3] == 1] )
 # Prepare the canban images
 SetVar *canban.imgList evaluate( self.vars.getvar('*folders')+self.vars.getvar('*files') )

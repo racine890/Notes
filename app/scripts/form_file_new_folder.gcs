@@ -1,5 +1,8 @@
 GetInput 2
 SetVar *fname LASTRESULT
+if evaluate({*fname} == "") then
+	MessageBox Error Please add a file name!
+	end
 SetVar *ftype 0
 execute app/scripts/db_insFile.gcs 1
 load home.ch

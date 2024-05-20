@@ -6,11 +6,31 @@
 	- Publish
 	- ajouter resources
 	- Faire une version pro
-	-Améliorer l'éditeur de sorte à ce qu'il soit comme word. +couleur, +gras, +police, +image, +...
+	- Améliorer l'éditeur de sorte à ce qu'il soit comme word. +couleur, +gras, +police, +image, +...
+	- Améliorer les binds pour que ça ressemble le plus possible à l'explorateur de fichiers (Possibilité d'améliorer)
+	- Add Path ( Show ahead )
+	- Mettre du style au texte en utilisant des conventions :
+		** Pour mettre du texte en gras
+		Mettre les liens en bleu et souligner
+		~~ Pour barrer le texte
+		. Au début d'une ligne pour la mettre en titre (ok)
+		, Au début d'une ligne pour la mettre en sous titre (ok)
+		; Au début d'une ligne pour highlight (ok)
+		=image.png au début d'une ligne pour charger une image (ok)
+	- Add Pagination
+	- Find a way to highlight selected files
 
 Done :
+	- Remove Scroll (ok)
+	- .txt export (ok)
+	- .html export (ok)
+	- Réparer les écrans (ok)
+	- Interdire création de fichier sans titre (ok)
+	- Option cancel (ok)
 	- Ajouter une note, (ok)
+	- Faire des icônes de dossiers en fonction du nom du dossier (ok)
 	- Créer dossier de notes, (ok)
 	- Parcourir dossiers (ok)
 	- Rechercher dans un dossier (ok)
 	- Verouiller un dossier (ok)
+	- !!! Back button is buggy, duknow why. (ok)

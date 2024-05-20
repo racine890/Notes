@@ -1,0 +1,9 @@
+#db_getFiles
+connect database database.db
+query select_one with q1
+close database
+end
+
+[q1]
+select * from File where id = *searched_id ;
+[/q1]

@@ -1,6 +1,11 @@
 check file database.db
+SetVar *platform PLATFORM
 if 0 then
-	system('copy default.db database.db')
+	compare *platform linux
+	if 0 then
+		system('cp default.db database.db')
+	if 5 then
+		system('copy default.db database.db')
 SetVar *canban.screenwidth 600
 SetVar *canban.screensize 600
 SetVar *canban.x 50
@@ -12,7 +17,10 @@ CheckFlag *inited
 if 1 then
 	execute app/scripts/refresh.gcs 1
 	end
+print val --------- Just opened ---------------
 SetVar *current_folder 1
 SetFlag *inited
+SetVar *parent_dir evaluate({1:1})
+SetVar *to_open evaluate(None, None, (1, 'Root', '2023-08-26', 0, 1, 1, None))
 execute app/scripts/refresh.gcs 1
 end
